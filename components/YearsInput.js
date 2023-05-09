@@ -17,14 +17,14 @@ const YearsInput = ({ bgColor, label, onChange }) => {
         <Text style={styles.label}>{label}</Text>
       </View>
       <View style={styles.inputs}>
-        <Text style={styles.label}>Лет: </Text>
+        <Text style={styles.inputLabel}>Лет: </Text>
         <TextInput
           style={styles.textInput}
           keyboardType="numeric"
           value={years.toString()}
           onChangeText={(value) => setYears(parseInt(value))}
         />
-        <Text style={styles.label}>Месяцев: </Text>
+        <Text style={styles.inputLabel}>Месяцев: </Text>
         <TextInput
           style={styles.textInput}
           keyboardType="numeric"
@@ -55,15 +55,20 @@ const styles = StyleSheet.create({
   },
   header: {
     marginLeft: "5%",
-    width: "50%",
+    width: "70%",
   },
-  label: {},
+  label: {
+    fontSize: 20,
+    fontWeight: 600,
+    width: "100%",
+  },
   inputs: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
   },
+  inputLabel: {},
 });
 
 export default YearsInput;

@@ -1,6 +1,7 @@
 import { StyleSheet, View, Text } from "react-native";
-import YearsInput from "./components/yearsInput/YearsInput";
+import YearsInput from "./components/YearsInput";
 import { useState } from "react";
+import CalculateButton from "./components/CalcButton";
 
 export default function App() {
   const [fullAge, setFullAge] = useState(0);
@@ -27,7 +28,7 @@ export default function App() {
         <Text>Sep: {separationAge}</Text>
         <YearsInput
           bgColor="#af5bd9"
-          label="Возраст пациента"
+          label="Возраст клиента"
           onChange={handleFullAgeChange}
         />
         <YearsInput
@@ -41,6 +42,7 @@ export default function App() {
           onChange={handleSeparationAgeChange}
         />
       </View>
+      <CalculateButton />
     </View>
   );
 }
@@ -52,8 +54,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   yearsInputContainer: {
+    marginTop: 150,
+    marginBottom: 100,
     borderWidth: 1,
     width: "95%",
-    top: 150,
   },
 });
