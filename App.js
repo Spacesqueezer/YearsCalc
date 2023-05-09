@@ -1,20 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from "react-native";
+import YearsInput from "./components/yearsInput/YearsInput";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+      <View style={styles.container}>
+        <View style={styles.yearsInputContainer}>
+          <YearsInput bgColor="#af5bd9" label="Возраст пациента"/>
+          <YearsInput bgColor="pink" label="Возраст диагноза"/>
+          <YearsInput bgColor="#3ae0d0" label="Возраст сепарации"/>
+        </View>
+      </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "gray",
+    alignItems: "center",
+  },
+  yearsInputContainer: {
+    borderWidth: 1,
+    width: "95%",
+    top: 150,
   },
 });
