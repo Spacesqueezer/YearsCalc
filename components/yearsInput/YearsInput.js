@@ -1,29 +1,13 @@
 import { View, TextInput, Text, StyleSheet } from "react-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const YearsInput = ({ bgColor, label }) => {
+const YearsInput = ({ bgColor, label, onChange }) => {
   const [months, setMonths] = useState(0);
   const [years, setYears] = useState(0);
 
-  const handleYearsChange = (text) => {
-    // Проверяем, что введенное значение является числом
-    const newValue = parseInt(text);
-    if (isNaN(newValue)) {
-      setYears(0);
-      return;
-    }
-    setYears(newValue);
-  };
-
-  const handleMonthsChange = (text) => {
-    // Проверяем, что введенное значение является числом от 1 до 11
-    const newValue = parseInt(text);
-    if (isNaN(newValue) || newValue < 0 || newValue > 11) {
-      setMonths(0);
-      return;
-    }
-    setMonths(newValue);
-  };
+  useEffect(() => {
+    onChange(months + years * 12);
+  }, [months, years]);
 
   return (
     <View
@@ -38,14 +22,14 @@ const YearsInput = ({ bgColor, label }) => {
           style={styles.textInput}
           keyboardType="numeric"
           value={years.toString()}
-          onChangeText={handleYearsChange}
+          onChangeText={(value) => setYears(parseInt(value))}
         />
         <Text style={styles.label}>Месяцев: </Text>
         <TextInput
           style={styles.textInput}
           keyboardType="numeric"
           value={months.toString()}
-          onChangeText={handleMonthsChange}
+          onChangeText={(value) => setMonths(parseInt(value))}
         />
       </View>
     </View>
