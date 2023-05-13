@@ -9,6 +9,22 @@ const YearsInput = ({ bgColor, label, onChange }) => {
     onChange(months + years * 12);
   }, [months, years]);
 
+  const handleYearsChange = (value) => {
+    if (/^\d+$/.test(value)) {
+      setYears(parseInt(value));
+    } else {
+      setYears(value.length === 0 ? 0 : years);
+    }
+  };
+
+  const handleMonthsChange = (value) => {
+    if (/^\d+$/.test(value)) {
+      setMonths(parseInt(value));
+    } else {
+      setMonths(value.length === 0 ? 0 : months);
+    }
+  };
+
   return (
     <View
       style={StyleSheet.flatten([styles.wrapper, { backgroundColor: bgColor }])}
@@ -22,14 +38,14 @@ const YearsInput = ({ bgColor, label, onChange }) => {
           style={styles.textInput}
           keyboardType="numeric"
           value={years.toString()}
-          onChangeText={(value) => setYears(parseInt(value))}
+          onChangeText={handleYearsChange}
         />
         <Text style={styles.inputLabel}>Месяцев: </Text>
         <TextInput
           style={styles.textInput}
           keyboardType="numeric"
           value={months.toString()}
-          onChangeText={(value) => setMonths(parseInt(value))}
+          onChangeText={handleMonthsChange}
         />
       </View>
     </View>

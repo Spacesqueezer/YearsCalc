@@ -1,7 +1,11 @@
-import { View, TouchableOpacity, StyleSheet } from "react-native";
+import { Text, TouchableOpacity, StyleSheet } from "react-native";
 
-const CalculateButton = ({}) => {
-  return <TouchableOpacity style={styles.wrapper}></TouchableOpacity>;
+const CalculateButton = ({ onPress }) => {
+  return (
+    <TouchableOpacity style={styles.wrapper} onPress={onPress}>
+      <Text>Па-shit-ать</Text>
+    </TouchableOpacity>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -9,6 +13,8 @@ const styles = StyleSheet.create({
     backgroundColor: "yellow",
     width: "95%",
     height: "5%",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
