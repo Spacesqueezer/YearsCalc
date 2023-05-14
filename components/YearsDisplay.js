@@ -2,7 +2,6 @@ import { View, Text, StyleSheet } from "react-native";
 import { useEffect, useState } from "react";
 
 const YearsDisplay = ({ label, bgColor, value }) => {
-  console.log(value);
   const [years, setYears] = useState(0);
   const [months, setMonths] = useState(0);
 
@@ -24,7 +23,8 @@ const YearsDisplay = ({ label, bgColor, value }) => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    width: "95%",
+    width: "100%",
+    margin: 5,
   },
 });
 
