@@ -1,7 +1,8 @@
 import YearsInput from "../YearsInput";
 import { SafeAreaView, View, Image, StyleSheet } from "react-native";
-import CalculateButton from "../CalcButton";
+import ImageButton from "../ImageButton";
 import { useState } from "react";
+import heart1 from "../../images/heart1.png";
 
 const InputScreen = ({ navigation }) => {
   const [fullAge, setFullAge] = useState(0);
@@ -83,7 +84,11 @@ const InputScreen = ({ navigation }) => {
             onChange={handleSeparationAgeChange}
           />
         </View>
-        <CalculateButton style={styles.btn} onPress={calculateAges} />
+        <ImageButton
+          style={styles.btn}
+          onPress={calculateAges}
+          image={heart1}
+        />
       </View>
     </SafeAreaView>
   );
@@ -105,7 +110,9 @@ const styles = StyleSheet.create({
     marginBottom: "20%",
   },
   btn: {
-    right: "50%",
+    backgroundColor: "yellow",
+    width: '30%',
+    aspectRatio: 1
   },
 });
 

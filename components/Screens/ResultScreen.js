@@ -1,18 +1,23 @@
 import YearsDisplay from "../YearsDisplay";
 import { View, StyleSheet } from "react-native";
+import heart2 from "../../images/heart2.png";
+import ImageButton from "../ImageButton";
 
-const ResultScreen = () => {
-    let renoDisplay;
-    let halfDisplay;
-    let quarterDisplay;
-    let eightLabel;
-    let parallel1;
-    let eightsDisplay;
-    let parallel2;
-    let parallel3;
-    let program1;
-    let program2;
-    return (
+const ResultScreen = ({ navigation }) => {
+  const doSomething = () => {
+    navigation.navigate("InputScreen");
+  };
+  let renoDisplay;
+  let halfDisplay;
+  let quarterDisplay;
+  let eightLabel;
+  let parallel1;
+  let eightsDisplay;
+  let parallel2;
+  let parallel3;
+  let program1;
+  let program2;
+  return (
     <View style={styles.yearsDisplayContainer}>
       <YearsDisplay bgColor="red" label="Точка Рено" value={renoDisplay} />
       <YearsDisplay
@@ -39,10 +44,26 @@ const ResultScreen = () => {
         label="Период программирования 2"
         value={program2}
       />
+      <ImageButton
+        style={styles.resultButton}
+        onPress={doSomething}
+        image={heart2}
+      />
     </View>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  yearsDisplayContainer: {
+    flex: 1,
+    paddingTop: 35,
+    backgroundColor: "#F5E9CF",
+  },
+  resultButton: {
+    backgroundColor: "yellow",
+    width: "50%",
+    aspectRatio: 1.51,
+  },
+});
 
 export default ResultScreen;
