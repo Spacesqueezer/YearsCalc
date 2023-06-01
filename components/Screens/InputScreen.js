@@ -1,9 +1,9 @@
 import YearsInput from "../YearsInput";
-import { View } from "react-native";
+import { SafeAreaView, View, Image, StyleSheet } from "react-native";
 import CalculateButton from "../CalcButton";
-import {useState} from "react";
+import { useState } from "react";
 
-const InputScreen = () => {
+const InputScreen = ({ navigation }) => {
   const [fullAge, setFullAge] = useState(0);
   const [diagnosisAge, setDiagnosisAge] = useState(0);
   const [separationAge, setSeparationAge] = useState(0);
@@ -59,28 +59,54 @@ const InputScreen = () => {
     // Установить параллели
     setProgram1(9 - Math.floor(_eightsAge / 12));
     setProgram2(9 - Math.floor(_eightsAge % 12));
+
+    navigation.navigate("ResultScreen");
   };
 
   return (
-    <View>
-      <YearsInput
-        bgColor="#af5bd9"
-        label="Возраст клиента"
-        onChange={handleFullAgeChange}
-      />
-      <YearsInput
-        bgColor="pink"
-        label="Возраст диагноза"
-        onChange={handleDiagnosisAgeChange}
-      />
-      <YearsInput
-        bgColor="#3ae0d0"
-        label="Возраст сепарации"
-        onChange={handleSeparationAgeChange}
-      />
-      <CalculateButton onPress={calculateAges} />
-    </View>
+    <SafeAreaView style={styles.wrapper}>
+      <View style={styles.screenComponents}>
+        <View style={styles.inputsContainer}>
+          <YearsInput
+            bgColor="#af5bd9"
+            label="Возраст клиента"
+            onChange={handleFullAgeChange}
+          />
+          <YearsInput
+            bgColor="pink"
+            label="Возраст диагноза"
+            onChange={handleDiagnosisAgeChange}
+          />
+          <YearsInput
+            bgColor="#3ae0d0"
+            label="Возраст сепарации"
+            onChange={handleSeparationAgeChange}
+          />
+        </View>
+        <CalculateButton style={styles.btn} onPress={calculateAges} />
+      </View>
+    </SafeAreaView>
   );
 };
 
-export default InputScreen
+const styles = StyleSheet.create({
+  wrapper: { flex: 1, paddingTop: 35, backgroundColor: "#C7B0A2" },
+  background: { width: "100%", height: "100%" },
+  screenComponents: {
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+  },
+  inputsContainer: {
+    top: 0,
+    left: 0,
+    width: "100%",
+    marginBottom: "20%",
+  },
+  btn: {
+    right: "50%",
+  },
+});
+
+export default InputScreen;
