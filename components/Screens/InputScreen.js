@@ -110,9 +110,10 @@ const styles = StyleSheet.create({
     marginBottom: "20%",
   },
   btn: {
-    backgroundColor: "yellow",
     width: '30%',
-    aspectRatio: 1
+    aspectRatio: 1,
+    left: 210,
+    top: -40
   },
 });
 
